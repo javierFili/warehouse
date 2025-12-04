@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Last name</th>
+        <th>email</th>
+        <th>created at</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="users: ${user}">
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.lastname}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.created_at}"></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
