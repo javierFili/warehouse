@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.engine.jdbc.batch.spi.Batch;
 
 import java.util.Date;
 
@@ -35,8 +34,8 @@ public class InventoryMovement {
     private ProductVariant productVariant;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "batch_id",nullable = true)
-    private StockBatche batch;
+    @JoinColumn(name = "stock_batch_id",nullable = true)
+    private StockBatche stockBatche;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_serial_id",nullable = true)

@@ -32,4 +32,9 @@ public class ProductBatche {
     @OneToMany(mappedBy = "productBatche",cascade = CascadeType.ALL)
     private List<StockBatche> stockBatches;
 
+    @OneToMany(mappedBy = "productBatche", cascade = CascadeType.ALL)
+    private List<PurchaseItem> purchaseItems;
+
+    @OneToMany(mappedBy = "productBatche", cascade = CascadeType.ALL)
+    private List<SaleItem> saleItems;
 }

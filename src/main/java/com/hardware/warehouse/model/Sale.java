@@ -6,35 +6,31 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.sql.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(
-        name="transafers"
+        name="sales"
 )
-public class Transfer {
+public class Sale {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long transferId;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="warehouse_from_id",nullable = false)
-    private Warehouse warehouseFrom;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="warehouse_to_id",nullable = false)
-    private Warehouse warehouseTo;
-
+    private Long saleId;
+    private String customerName;
     private Date date;
-
+    private Long total;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id",nullable = false)
     private User user;
 
-    private String status;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="warehouse_id",nullable = false)
+    private Warehouse warehouse;
 
-
+    @OneToMany(mappedBy = "sale",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<SaleItem> saleItems;
 }

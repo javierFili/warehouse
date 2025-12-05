@@ -29,4 +29,7 @@ public class ProductSerial {
 
     @OneToMany(mappedBy = "productSerial", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<InventoryMovement> inventoryMovements;
+
+    @OneToMany(mappedBy = "productSerial",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<SaleItem> saleItems;
 }

@@ -27,5 +27,16 @@ public class Warehouse {
     @OneToMany(mappedBy = "warehouse",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<InventoryMovement> inventoryMovements;
 
+    @OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Sale> sales;
+
+    @OneToMany(mappedBy = "warehouseFrom", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Transfer> transfersFrom;
+
+    @OneToMany(mappedBy = "warehouseTo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Transfer> transfersTo;
+
+    @OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<StockAdjustment> stockAdjustments;
 
 }
