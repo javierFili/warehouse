@@ -10,10 +10,13 @@
     <table border="1">
         <thead>
         <tr>
+            <th>Id</th>
             <th>Name</th>
             <th>Last name</th>
+            <th>Status</th>
             <th>email</th>
             <th>created at</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -21,10 +24,14 @@
                 <td th:text="${user.idUser}"></td>
                 <td th:text="${user.name}"></td>
                 <td th:text="${user.lastName}"></td>
+                <td th:text="${user.is_active? 'activa':'no activa'}"></td>
                 <td th:text="${user.email}"></td>
                 <td th:text="${user.created_at}"></td>
+                <td><a th:href="@{/user/{id}(id=${user.idUser})}">Show User</a></td>
             </tr>
         </tbody>
     </table>
+    <a th:href="@{/user/create}">Create new user</a>
+
 </body>
 </html>

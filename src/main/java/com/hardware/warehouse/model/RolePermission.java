@@ -4,26 +4,23 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(
-        name = "stocks"
+        name="role_permissions"
 )
-public class Stock {
+public class RolePermission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long stockId;
+    private Long rolePermissionId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="product_id",nullable = false)
-    private Product product;
+    @JoinColumn(name="permission_id",nullable = false)
+    private Permission permission;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="product_variant_id",nullable = false)
-    private ProductVariant productVariant;
+    @JoinColumn(name="role_id",nullable = false)
+    private  Role role;
 
-    private Long quantity;
 }

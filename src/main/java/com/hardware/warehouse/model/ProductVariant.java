@@ -3,12 +3,11 @@ package com.hardware.warehouse.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -23,6 +22,7 @@ public class ProductVariant {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="product_id",nullable = false)
+    @ToString.Exclude
     private Product product;
 
     @OneToMany(mappedBy = "productVariant",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
