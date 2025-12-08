@@ -1,6 +1,7 @@
 package com.hardware.warehouse.service;
 
 import com.hardware.warehouse.model.User;
+import com.hardware.warehouse.model.UserRole;
 import com.hardware.warehouse.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
 
     @Override
     public List<User> findAllUsers() {
@@ -44,4 +46,19 @@ public class UserServiceImpl implements UserService {
     public void deleteUserById(Long idUser) {
         userRepository.deleteById(idUser);
     }
+
+    @Override
+    public void changeStatus(Long idUser,String status){
+        User userDB = findUserById(idUser).get();
+        userDB.set_active(status.equals("true")?true:false);
+        userRepository.save(userDB);
+    }
+
+    @Override
+    public boolean updateRole(Long idUser, Long userRoleId){
+
+
+        return false;
+    }
+
 }

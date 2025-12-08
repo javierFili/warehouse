@@ -10,5 +10,7 @@ public interface UserService {
     Optional<User> findUserById(Long id);
     User saveUser(User user);
     void updateUser(Long idUser, User user);
+    void changeStatus(Long idUser, String status);
     void deleteUserById(Long idUser);
+    boolean updateRole(Long idUser,Long userRoleId);
 }

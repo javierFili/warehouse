@@ -2,10 +2,14 @@ package com.hardware.warehouse.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -17,7 +21,7 @@ public class Permission {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long permissionId;
 
-    private String key;
+    private String codeKey;
     private String description;
 
     @OneToMany(mappedBy="permission",cascade = CascadeType.ALL,fetch = FetchType.LAZY)

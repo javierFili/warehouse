@@ -7,7 +7,49 @@
 </head>
 <body>
 <h2>entra</h2>
-    <span th:text="${user.idUser}"></span>
-    <p>laksdjf</p>
+    <span th:text="${user.getName()+' '+user.getLastName()}"></span>
+
+<form th:action="@{/user/change-status/{id}(id=${user.idUser})}" method="post">
+    <label>Active</label>
+    <select name="is_active" id="is_active">
+        <option value="true" th:selected="${user.getIsActive()}">Active</option>
+        <option value="false" th:selected="${!user.getIsActive()}">Inactive</option>
+    </select>
+    <br>
+    <br>
+    <br>
+    <button type="submit">Change</button>
+</form>
+
+<h3>Roles of user</h3>
+<form th:action="@{/user/role/{id}(id=${user.idUser})}" method="POST">
+    <label for="role_id">Role</label>
+    <select name="role_id[]" id="role_id" multiple>
+        <option th:each="role : ${roles}"
+                th:value="${role.roleId}"
+                th:text="${role.name}"
+                th:selected="${#lists.contains(user.getRoleIds(),role.roleId)}"
+        >
+        </option>
+    </select>
+    <br>
+    <br>
+    <button type="submit">save role</button>
+</form>
+
+<h3>Permissions</h3>
+<form th:action="@{user/permission/{id}(id=${user.idUser})}">
+    <label for="user_permission_id">Permissions</label>
+    <select name="user_permission_id[]" id="user_permission_id" multiple>
+        <option th:each="permission:${permissions}"
+                th:text="${permission.getCodeKey()}"
+                th:value="${permission.getPermissionId()}"
+                th:selected="${#lists.contains(user.getPermissionIds(),permission.getPermissionId())}"
+        ></option>
+    </select>
+    <br>
+    <br>
+    <button type="submit">Save permissions</button>
+</form>
 </body>
 </html>
