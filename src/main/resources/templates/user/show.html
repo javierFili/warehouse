@@ -38,7 +38,7 @@
 </form>
 
 <h3>Permissions</h3>
-<form th:action="@{user/permission/{id}(id=${user.idUser})}">
+<form th:action="@{/user/permission/{id}(id=${user.idUser})}">
     <label for="user_permission_id">Permissions</label>
     <select name="user_permission_id[]" id="user_permission_id" multiple>
         <option th:each="permission:${permissions}"
@@ -49,7 +49,6 @@
     </select>
     <br>
     <br>
-    <button type="submit">Save permissions</button>
 </form>
 </body>
 </html>

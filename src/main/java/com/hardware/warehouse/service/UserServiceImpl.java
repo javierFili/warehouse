@@ -35,7 +35,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(Long idUser, User user) {
-        User userBD = findUserById(idUser).get();
+        User userBD = findUserById(idUser)
+                .orElseThrow(()->new RuntimeException("User not found"));
         userBD.setName(user.getName());
         user.setEmail(user.getEmail());
         user.setUpdated_at(user.getUpdated_at());
@@ -49,16 +50,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void changeStatus(Long idUser,String status){
-        User userDB = findUserById(idUser).get();
+        User userDB = findUserById(idUser)
+                .orElseThrow(()->new RuntimeException("User not found"));
         userDB.set_active(status.equals("true")?true:false);
         userRepository.save(userDB);
     }
-
-    @Override
-    public boolean updateRole(Long idUser, Long userRoleId){
-
-
-        return false;
-    }
-
 }
